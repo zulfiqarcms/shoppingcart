@@ -9,7 +9,7 @@
  
 @endsection
 @section('content')
-  {{!!Form::hidden('', $increment = 1) !!}}
+  {{-- {{!!Form::hidden('', $increment = 1) !!}} --}}
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -41,14 +41,14 @@
                 <h3 class="card-title">All categories</h3>
               </div>
                             
-              @if(Session::has('status'))
+              {{-- @if(Session::has('status'))
                 <div class="alert alert-success">
                   <ul>
                     {{Session::get('status')}}
                   </ul>
               </div>
 
-              @endif
+              @endif --}}
               <!-- /.card-header -->
               <div class="card-body">
                 <table id="example1" class="table table-bordered table-striped">
@@ -60,10 +60,9 @@
                   </tr>
                   </thead>
                   <tbody>
-                 
+                    {{!!Form::hidden('', $increment = 1) !!}}
                     @foreach ($categories as $category)
                     <tr>
-                      
                       <td>{{$increment}}</td>
                       <td>{{$category->category_name}}
                       </td>
@@ -73,12 +72,7 @@
                       </td>  
                     </tr>
                     {{!!Form::hidden('', $increment = $increment+1) !!}}
-                    @endforeach  
-
-
-
-
-                  
+                    @endforeach                    
                   </tbody>
                   <tfoot>
                   <tr>
