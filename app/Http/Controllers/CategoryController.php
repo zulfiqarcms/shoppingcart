@@ -39,6 +39,15 @@ class CategoryController extends Controller
             return view('admin.edit_category')->with('category',$category);
         }
 
+    //
+    public function delete_category($id){
+        //print($id);
+        $category = Category::Find($id);
+        $category->delete();
+        return back()->with('status','The category has been succesfully Deleted !!');
+   }
+
+
     public function updatecategory(Request $request){
         $this->validate($request,['category_name'=> 'required']);
         $category =Category::find($request->input('id'));

@@ -40,6 +40,7 @@ Route::get('/categories',[CategoryController::class,'categories'] );
 
 Route::post('/savecategory',[CategoryController::class,'savecategory']);
 Route::get('/edit_category/{id}',[CategoryController::class,'edit_category'] );
+Route::get('/delete_category/{id}',[CategoryController::class,'delete_category'] );
 Route::get('/updatecategory',[CategoryController::class,'updatecategory'] );
 Route::post('/updatecategory',[CategoryController::class,'updatecategory'] );
 //Slider Routes
