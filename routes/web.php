@@ -33,6 +33,10 @@ Route::get('/test',[AdminController::class,'test'] );
 //Product Routes
 Route::get('/addproduct',[ProductController::class,'addproduct'] );
 Route::get('/products',[ProductController::class,'products'] );
+Route::post('/saveproduct',[ProductController::class,'saveproduct'] );
+
+
+
 
 //Category Routes
 Route::get('/addcategory',[CategoryController::class,'addcategory'] );
