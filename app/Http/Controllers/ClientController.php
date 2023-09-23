@@ -3,17 +3,26 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Slider;
+use App\Models\Category;
+use App\Models\Product;
 
 class ClientController extends Controller
 {
     //
     public function home(){
-        return view('client.home');
+        $sliders = Slider::All()->where('status', 1);
+        $products = Product::All()->where('status', 1);
+        
+        return view('client.home')->with('sliders',$sliders)->with('products',$products);
     }
     //
     public function shop(){
-        return view('client.shop');
-    }
+        $categories = Category::All();
+        $products = Product::All()->where('status', 1);
+        
+        return view('client.shop')->with('categories',$categories)->with('products',$products);
+   }
     //
     public function cart(){
         return view('client.cart');

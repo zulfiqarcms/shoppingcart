@@ -35,21 +35,51 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form >
+              @if(Session::has('status'))
+                <div class="alert alert-success">
+                  <ul>
+                    {{Session::get('status')}}
+                  </ul>
+              </div>
+
+              @endif
+
+              @if (count($errors)>0)
+              <div class="alert alert-danger">
+                <ul>
+                  @foreach ($errors->all() as $error)
+                   <li>{{$error}}</li>   
+                  @endforeach
+                </ul>
+              </div>
+            @endif
+
+              <!-- /.card-header -->
+              <!-- form start -->
+              {{-- <form id="quickForm"> --}}
+                
+              {!! Form::open(['action' => 'App\Http\Controllers\SliderController@saveslider', 'method' => 'POST','enctype' => 'multipart/form-data']) !!}
+              {{ csrf_field() }}
+
                 <div class="card-body">
                   <div class="form-group">
-                    <label for="exampleInputEmail1">Slider description 1</label>
-                    <input type="text" name="description1" class="form-control" id="exampleInputEmail1" placeholder="Enter slider description">
+                    
+                    {{Form::label('','Slider Description 1',['for' => 'exampleInputEmail1'])}}
+                    {{Form::text('description1','',['class' => 'form-control','id' => 'exampleInputEmail1','placeholder'=>'Enter Description'])}}
+                    
                   </div>
                   <div class="form-group">
-                    <label for="exampleInputEmail1">Slider description 2</label>
-                    <input type="text" name="description2" class="form-control" id="exampleInputEmail1" placeholder="Enter slider description">
+                    
+                    {{Form::label('','Slider Description 2',['for' => 'exampleInputEmail1'])}}
+                    {{Form::text('description2','',['class' => 'form-control','id' => 'exampleInputEmail1','placeholder'=>'Enter Description'])}}
+                    
                   </div>
+                  
                   <label for="exampleInputFile">Slider image</label>
                   <div class="input-group">
                     <div class="custom-file">
-                      <input type="file" class="custom-file-input" id="exampleInputFile">
-                      <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                      {{Form::file('slider_image',['class' => 'custom-file-input','id' => 'exampleInputFile'])}}
+                      {{Form::label('Choose FIle','',['class' => 'custom-file-label','for' => 'exampleInputFile'])}}
                     </div>
                     <div class="input-group-append">
                       <span class="input-group-text">Upload</span>
@@ -58,10 +88,11 @@
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
-                  <!-- <button type="submit" class="btn btn-warning">Submit</button> -->
-                  <input type="submit" class="btn btn-warning" value="Save" >
+                 {{Form::submit('Save',['class' => 'btn btn-success'])}} 
                 </div>
               </form>
+
+              {!!Form::close() !!}
             </div>
             <!-- /.card --> 
             </div>

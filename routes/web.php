@@ -34,7 +34,13 @@ Route::get('/test',[AdminController::class,'test'] );
 Route::get('/addproduct',[ProductController::class,'addproduct'] );
 Route::get('/products',[ProductController::class,'products'] );
 Route::post('/saveproduct',[ProductController::class,'saveproduct'] );
-
+Route::get('/edit_product/{id}',[ProductController::class,'edit_product'] );
+Route::get('/delete_product/{id}',[ProductController::class,'delete_product'] );
+Route::get('/updateproduct',[ProductController::class,'updateproduct'] );
+Route::post('/updateproduct',[ProductController::class,'updateproduct'] );
+Route::get('/activate_product/{id}',[ProductController::class,'activateproduct'] );
+Route::get('/unactivate_product/{id}',[ProductController::class,'unactivateproduct'] );
+Route::get('/view_product_by_category/{category_name}',[ProductController::class,'view_product_by_category'] );
 
 
 
@@ -47,9 +53,20 @@ Route::get('/edit_category/{id}',[CategoryController::class,'edit_category'] );
 Route::get('/delete_category/{id}',[CategoryController::class,'delete_category'] );
 Route::get('/updatecategory',[CategoryController::class,'updatecategory'] );
 Route::post('/updatecategory',[CategoryController::class,'updatecategory'] );
+
+
+
+
 //Slider Routes
 Route::get('/addslider',[SliderController::class,'addslider'] );
 Route::get('/sliders',[SliderController::class,'sliders'] );
+Route::post('/saveslider',[SliderController::class,'saveslider'] );
+Route::get('/edit_slider/{id}',[SliderController::class,'edit_slider'] );
+Route::get('/delete_slider/{id}',[SliderController::class,'delete_slider'] );
+Route::get('/updateslider',[SliderController::class,'updateslider'] );
+Route::post('/updateslider',[SliderController::class,'updateslider'] );
+Route::get('/activate_slider/{id}',[SliderController::class,'activateslider'] );
+Route::get('/unactivate_slider/{id}',[SliderController::class,'unactivateslider'] );
 
 
 //Orders Routes

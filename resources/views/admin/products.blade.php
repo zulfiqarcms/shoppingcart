@@ -62,7 +62,7 @@
                   </thead>
                   <tbody>
 
-                    @foreach  ($products as $product)
+                    @foreach($products as $product)
                       <tr>
                         <td>{{$increment}}</td>
                         <td>
@@ -72,9 +72,14 @@
                         <td>{{$product->product_category}}</td>
                         <td>{{'$ '.$product->product_price}}</td>
                         <td>
-                          <a href="#" class="btn btn-success">Unactivate</a>
-                          <a href="#" class="btn btn-primary"><i class="nav-icon fas fa-edit"></i></a>
-                          <a href="#" id="delete" class="btn btn-danger" ><i class="nav-icon fas fa-trash"></i></a>
+                          @if ($product->status==1)
+                            <a href="{{url('/unactivate_product/'.$product->id)}}" class="btn btn-success">Unactivate</a>
+                          @else
+                            <a href="{{url('/activate_product/'.$product->id)}}" class="btn btn-warning">Activate</a>
+                          @endif
+                          
+                          <a href="{{url('/edit_product/'.$product->id)}}" class="btn btn-primary"><i class="nav-icon fas fa-edit"></i></a>
+                          <a href="{{url('/delete_product/'.$product->id)}}" id="delete" class="btn btn-danger" ><i class="nav-icon fas fa-trash"></i></a>
                         </td>
                       </tr>
                       {!!Form::hidden('', $increment = $increment+1) !!}
