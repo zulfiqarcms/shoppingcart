@@ -24,6 +24,9 @@ Route::get('/cart',[ClientController::class,'cart'] );
 Route::get('/checkout',[ClientController::class,'checkout'] );
 Route::get('/login',[ClientController::class,'login'] );
 Route::get('/signup',[ClientController::class,'signup'] );
+Route::get('/addtocart/{id}',[ClientController::class,'addtocart'] );
+Route::post('/update_qty/{id}',[ClientController::class,'update_qty'] );
+Route::get('/remove_from_cart/{id}',[ClientController::class,'remove_from_cart'] );
 
 
 //Admin Routes
@@ -72,6 +75,7 @@ Route::get('/unactivate_slider/{id}',[SliderController::class,'unactivateslider'
 //Orders Routes
 Route::get('/orders',[ClientController::class,'orders'] );
 
+//add to cart
 
 
 /*Route::get('/dashboard', function () {
